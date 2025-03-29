@@ -1,45 +1,52 @@
-public class Rekening {
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Rekening {
     private String namaPemilik;
     private String nomorRekening;
     private double saldo;
 
-    public void Rekening ( String namaPemilik, String nomorRekening, double saldo){
-        this.namaPemilik= namaPemilik;
-        this.nomorRekening= nomorRekening;
+    public Rekening(String namaPemilik, String nomorRekening, double saldo) {
+        this.namaPemilik = namaPemilik;
+        this.nomorRekening = nomorRekening;
         this.saldo = saldo;
     }
-    public String getnamaPemilik(){
+
+    public String getNamaPemilik() {
         return namaPemilik;
     }
-    public String getnomorRekening(){
+
+    public String getNomorRekening() {
         return nomorRekening;
     }
-    public double getsaldo(){
+
+    public double getSaldo() {
         return saldo;
     }
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-    public void setor (double jumlah){
-        if (jumlah > 0){
+
+    public void setor(double jumlah) {
+        if (jumlah > 0) {
             saldo += jumlah;
-            System.out.println ("Setor : Rp "+ jumlah ){
-        else (jumlah =< 0)
+            System.out.println("Setor : Rp " + jumlah);
+        } else {
+            System.out.println("Setoran harus lebih dari 0");
+        }
+    }
+
+    public void tarik(double jumlah) {
+        if (jumlah > 0 && jumlah <= saldo) {
             saldo -= jumlah;
-            System.out.println( "Setoran harus lebih dari 0");
+            System.out.println("Tarik : Rp " + jumlah);
+        } else {
+            System.out.println("Tarikan tidak valid atau saldo tidak cukup");
         }
     }
 
-    public void tarik (double jumlah){
-    
+    public void tampilkanInfo() {
+        System.out.println("================ Informasi Rekening ====================");
+        System.out.println("Nama Pemilik: " + namaPemilik);
+        System.out.println("Nomor Rekening: " + nomorRekening);
+        System.out.println("Saldo: Rp " + saldo);
+        System.out.println("========================================================");
     }
-
-        //Tampilkan Info
-        public void TampilkanInfo(){
-            System.out.println ("================Informasi Bank====================");
-            System.out.println ("Nama Rekening =" + namaPemilik);
-            System.out.println("Nomor Rekening="+ nomorRekening);
-            System.out.println ("Jumlah Saldo sekarang="+ saldo);
-            System.out.println ("==================================================");
-        }
-    }
+}
